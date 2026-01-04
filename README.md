@@ -90,21 +90,21 @@ BlogAgent is a full-stack AI blogging automation platform that helps users gener
 blog-agent/
 │
 ├── app/
-│   ├── api/
-│   │   ├── v1/                # Core API routes
-│   │   ├── oauth.py            # Blogger OAuth
-│   │   ├── login.py            # JWT login
-│   │   └── rate_limit.py
-│   │
-│   ├── blogger/                # Blogger publishing logic
-│   ├── core/                   # Auth, JWT, config
-│   ├── database/               # SQLite setup
-│   ├── llm/                    # Prompts + Groq client
-│   ├── plagiarism/             # Sentence-level checker
-│   ├── services/               # Image search
-│   └── ui/                     # Frontend (HTML/CSS/JS)
+│ ├── api/
+│ │ ├── v1/ # Core API routes
+│ │ ├── oauth.py # Blogger OAuth
+│ │ ├── login.py # JWT login
+│ │ └── rate_limit.py
+│ │
+│ ├── blogger/ # Blogger publishing logic
+│ ├── core/ # Auth, JWT, config
+│ ├── database/ # SQLite setup
+│ ├── llm/ # Prompts + Groq client
+│ ├── plagiarism/ # Sentence-level checker
+│ ├── services/ # Image search
+│ └── ui/ # Frontend (HTML/CSS/JS)
 │
-├── data/                        # Local runtime data (ignored in git)
+├── data/ # Local runtime data (ignored in git)
 ├── requirements.txt
 ├── run.py
 └── README.md
