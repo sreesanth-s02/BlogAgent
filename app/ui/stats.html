@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blog Agent • Analytics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/ui/styles.css" />
+</head>
+
+<body>
+
+<div class="content-box" style="max-width:720px;margin:8vh auto">
+
+  <div class="stats-header">
+    <h2>📊 Blog Analytics</h2>
+    <button class="secondary" onclick="location.href='/ui'">⬅ Back</button>
+  </div>
+
+  <div class="stat">📝 Total Blogs: <b id="total">–</b></div>
+  <div class="stat">✅ Published: <b id="published">–</b></div>
+  <div class="stat">🕒 Drafts: <b id="drafts">–</b></div>
+  <div class="stat">📉 Avg Similarity: <b id="similarity">–</b></div>
+
+</div>
+
+<script src="/ui/api.js"></script>
+<script>
+requireAuth();
+
+if (localStorage.getItem("dark") === "1") {
+  document.body.classList.add("dark");
+}
+
+async function loadStats() {
+  try {
+    const d = await apiFetch("/stats");
+
+    document.getElementById("total").textContent = d.total_blogs;
+    document.getElementById("published").textContent = d.published;
+    document.getElementById("drafts").textContent = d.drafts;
+    document.getElementById("similarity").textContent =
+      d.average_similarity.toFixed(2);
+  } catch {
+    showToast("Failed to load stats", "error");
+  }
+}
+
+loadStats();
+</script>
+
+</body>
+</html>

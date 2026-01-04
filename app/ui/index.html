@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blog Agent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <h2>🧠 Blog Agent</h2>
+
+  <div class="top-actions">
+    <span id="bloggerStatus" class="status">Checking Blogger…</span>
+    <button onclick="toggleDarkMode()" aria-label="Toggle theme">🌙</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <button onclick="loadSidebar(false)">📄 Blogs</button>
+    <button onclick="loadSidebar(true)">📁 Archived</button>
+    <div id="sidebarList"></div>
+  </aside>
+
+  <!-- EDITOR -->
+  <main class="editor-container">
+    <div id="editor" class="editor"></div>
+
+    <button
+      id="publishBtn"
+      class="publish-btn"
+      disabled
+    >
+      🚀 Publish
+    </button>
+  </main>
+
+</div>
+
+<!-- REWRITE MODAL -->
+<div id="rewriteModal" class="modal hidden" role="dialog">
+  <div class="modal-box">
+    <h3>Rewrite sentence</h3>
+    <p id="rewriteOriginal"></p>
+    <small id="rewriteSimilarity"></small>
+
+    <textarea
+      id="rewriteInstruction"
+      placeholder="How should this be rewritten?"
+      maxlength="200"
+    ></textarea>
+
+    <div class="modal-actions">
+      <button onclick="submitRewrite()">Rewrite</button>
+      <button onclick="closeRewriteModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toastRoot"></div>
+
+<script src="api.js"></script>
+<script src="auth.js"></script>
+<script src="app.js"></script>
+<script src="editor.js"></script>
+<script src="sidebar.js"></script>
+<script src="rewrite.js"></script>
+<script src="image.js"></script>
+
+<script>
+  requireAuth();
+  loadSidebar();
+</script>
+
+</body>
+</html>
